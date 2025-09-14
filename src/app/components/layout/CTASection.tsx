@@ -30,7 +30,7 @@ export const FinalCTASection: React.FC = () => {
                 Yousaffer makes corporate travel smarter, safer, and more efficient.
               </p>
               <p className="font-roboto text-lg text-gray-700 leading-relaxed">
-                Our platform empowers companies to plan, book, and manage trips effortlessly - while giving them full visibility, control, and cost oversight. With customizable tools tailored to your needs, we simplify travel management and save focus for what's everyday.
+                Our platform empowers companies to plan, book, and manage trips effortlessly - while giving them full visibility, control, and cost oversight. With customizable tools tailored to your needs, we simplify travel management and save focus for what&apos;s everyday.
               </p>
             </div>
 
