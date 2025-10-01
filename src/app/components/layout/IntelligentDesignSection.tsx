@@ -1,46 +1,45 @@
 "use client";
 import React from 'react';
-import { ShieldCheck, BarChart3, Globe, Users, Cpu, Briefcase } from 'lucide-react';
-
+import Image from 'next/image';
 // Data for the advantage cards
 const advantagesData = [
   {
-    icon: ShieldCheck,
+    icon: '/icons/icon1.svg',
     title: "Robust Security",
     subtitle: "Enterprise-grade security to protect your data and privacy.",
   },
   {
-    icon: BarChart3,
+    icon: '/icons/icon2.svg',
     title: "Advanced Analytics",
     subtitle: "Gain actionable insights with our powerful reporting tools.",
   },
   {
-    icon: Globe,
+    icon: '/icons/icon3.svg',
     title: "Global Scalability",
     subtitle: "Our platform grows with your business, wherever you are.",
   },
   {
-    icon: Users,
+    icon: '/icons/icon4.svg',
     title: "User-Centric Design",
     subtitle: "Intuitive interfaces that your employees will love to use.",
   },
   {
-    icon: Cpu,
+    icon: '/icons/icon5.svg',
     title: "AI-Powered Automation",
     subtitle: "Streamline workflows and reduce manual tasks with smart tech.",
   },
   {
-    icon: Briefcase,
+    icon: '/icons/icon6.svg',
     title: "Full Compliance",
     subtitle: "Stay compliant with travel policies and regulations effortlessly.",
   },
 ];
 
 // Reusable Card Component
-const AdvantageCard = ({ icon: Icon, title, subtitle }: { icon: React.ElementType; title: string; subtitle: string; }) => (
+const AdvantageCard = ({ icon: Icon, title, subtitle }: { icon: string; title: string; subtitle: string; }) => (
   <div className="bg-[#F5F5F5] rounded-2xl p-6 flex items-center gap-5 w-full text-left">
     <div className="flex-shrink-0 w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-sm">
-      <Icon className="w-8 h-8 text-[#0B99FF]" />
+      <Image src={Icon} alt={title} width={32} height={32} />
     </div>
     <div className="flex-1">
       <h3 className="font-poppins font-bold text-[28px] text-[#0D1230]">

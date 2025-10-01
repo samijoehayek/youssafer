@@ -8,6 +8,8 @@ import DemoSection from "./components/layout/EmailSection";
 import { AdvantagesSection } from "./components/layout/IntelligentDesignSection";
 import { FinalCTASection } from "./components/layout/CTASection";
 import { Footer } from "./components/layout/Footer";
+// ✅ Import the Next.js Image component
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -26,6 +28,18 @@ export default function Home() {
       <div className="bg-white h-24" />
       <DemoSection />
       <AdvantagesSection />
+
+      {/* ✅ New Full-Width Image Section */}
+      <section className="relative w-full h-[900px]">
+        <Image
+          src="/wwpeople.png"
+          alt="A diverse group of professionals working together globally."
+          fill
+          style={{ objectFit: "cover" }}
+          quality={100}
+        />
+      </section>
+
       <FinalCTASection />
       <Footer />
     </main>

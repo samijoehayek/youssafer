@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
+// ✅ Lucide Arrow imports removed
 import {
-  ArrowUp,
-  ArrowDown,
   Monitor,
   Map,
   Users,
@@ -11,6 +10,8 @@ import {
   BarChart,
 } from "lucide-react";
 import Link from "next/link";
+// ✅ Next.js Image component imported
+import Image from "next/image";
 
 // Data for the vertical slider cards
 const cardData = [
@@ -94,7 +95,7 @@ export function BeyondSoftwareSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {
-    // We can scroll until the last item is fully visible in the 4th slot
+    // We can scroll until the last group of 4 cards is visible
     if (currentIndex < cardData.length - 4) {
       setCurrentIndex((prev) => prev + 1);
     }
@@ -106,7 +107,8 @@ export function BeyondSoftwareSection() {
     }
   };
 
-  const CARD_HEIGHT = 150; // Estimated height of a card + gap
+  // ✅ Adjusted card height for more accurate scrolling calculation
+  const CARD_HEIGHT = 144; // (Card height + gap)
 
   return (
     <section className="bg-[#EFF1FB] min-h-[1000px] w-full flex items-center py-24 px-6 lg:px-40">
@@ -117,7 +119,8 @@ export function BeyondSoftwareSection() {
             <h2 className="font-poppins text-5xl md:text-[65px] font-normal text-black leading-tight">
               Beyond Software
             </h2>
-            <h2 className="font-poppins text-6xl md:text-[70px] font-bold text-[#293893] leading-tight mt-1">
+            {/* ✅ Title width constrained to ensure two-line display */}
+            <h2 className="font-poppins text-6xl md:text-[65px] font-bold text-[#293893] leading-tight mt-1">
               We Power Travel Operations
             </h2>
             <p className="font-poppins text-xl md:text-[24px] font-normal mt-8 text-gray-700">
@@ -127,7 +130,8 @@ export function BeyondSoftwareSection() {
             <div className="pt-8">
               <Link
                 href="/pilot"
-                 className="inline-block bg-active-blue text-white text-base font-medium px-8 py-4 rounded-lg shadow-lg hover:bg-opacity-90 transition-colors"
+                 // ✅ Removed shadow-lg from the button
+                 className="inline-block bg-active-blue text-white text-base font-medium px-8 py-4 rounded-lg hover:bg-opacity-90 transition-colors"
               >
                 Schedule a Consultation
               </Link>
@@ -139,10 +143,12 @@ export function BeyondSoftwareSection() {
         <div className="lg:w-1/2 flex items-center justify-center lg:justify-end gap-6 w-full mt-12 lg:mt-0">
           {/* Vertical Slider Implementation */}
           <div 
-            className="w-[80%] max-w-md h-[600px] overflow-hidden relative"
+            // ✅ Container height increased to show 4.5 cards
+            className="w-[80%] max-w-md h-[660px] overflow-hidden relative"
             style={{ 
-              WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)',
-              maskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)'
+              // ✅ Gradient mask adjusted for a later fade-out
+              WebkitMaskImage: 'linear-gradient(to bottom, black 90%, transparent 100%)',
+              maskImage: 'linear-gradient(to bottom, black 90%, transparent 100%)'
             }}
           >
             <div
@@ -164,19 +170,22 @@ export function BeyondSoftwareSection() {
 
           {/* Slider Arrows */}
           <div className="flex flex-col gap-4">
+            {/* ✅ Button size reduced and shadows removed */}
             <button
               onClick={handlePrev}
-              className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-110 active:scale-95 disabled:opacity-50 disabled:scale-100"
+              className="w-14 h-14 bg-white rounded-full flex items-center justify-center transition-transform hover:scale-110 active:scale-95 disabled:opacity-50 disabled:scale-100"
               disabled={currentIndex === 0}
             >
-              <ArrowUp className="w-8 h-8 text-black" />
+              {/* ✅ Replaced with custom SVG icon */}
+              <Image src="/icons/uparrow.svg" alt="Up" width={24} height={24} />
             </button>
             <button
               onClick={handleNext}
-              className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg transition-transform hover:scale-110 active:scale-95 disabled:opacity-50 disabled:scale-100"
+              className="w-14 h-14 bg-white rounded-full flex items-center justify-center transition-transform hover:scale-110 active:scale-95 disabled:opacity-50 disabled:scale-100"
               disabled={currentIndex >= cardData.length - 4}
             >
-              <ArrowDown className="w-8 h-8 text-black" />
+              {/* ✅ Replaced with custom SVG icon */}
+              <Image src="/icons/downarrow.svg" alt="Down" width={24} height={24} />
             </button>
           </div>
         </div>
@@ -184,4 +193,3 @@ export function BeyondSoftwareSection() {
     </section>
   );
 }
-

@@ -36,10 +36,9 @@ const Homepage = () => {
 
       {/* Content Grid Layer */}
       <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 items-center gap-8 px-6 sm:px-12 lg:px-24">
-        {/* ✅ Text Column Updated */}
-        {/* We're now starting this column at the 2nd grid line and shifting it up. */}
         <div className="lg:col-span-9 flex flex-col justify-center gap-y-6 text-center lg:text-left">
-          <h1 className="text-5xl lg:text-[70px] leading-tight">
+          {/* ✅ Title updated to Poppins font */}
+          <h1 className="text-5xl lg:text-[70px] leading-tight font-poppins">
             <span className="font-light text-black">Smart Travel</span>
             <br />
             <span className="font-bold text-active-blue">
@@ -47,7 +46,8 @@ const Homepage = () => {
             </span>
           </h1>
 
-          <p className="text-xl lg:text-[20px] text-hero-desc mx-auto lg:mx-0">
+          {/* ✅ Body text updated to Roboto font */}
+          <p className="text-xl lg:text-[20px] text-hero-desc mx-auto lg:mx-0 font-roboto">
             Yousaffer empowers Travel Agents, TMCs, and Corporate clients across
             <br />
             the Middle East and Africa with smart tech and expert consultancy.
@@ -59,16 +59,19 @@ const Homepage = () => {
           </p>
 
           <div className="flex flex-col items-center lg:items-start mt-2">
-            <p className="text-3xl font-bold text-hero-stat">20+ years</p>
-            <p className="text-xl text-hero-stat">
+            {/* ✅ Statistic title updated to Poppins font */}
+            <p className="text-3xl font-bold text-hero-stat font-poppins">20+ years</p>
+            {/* ✅ Statistic subtitle updated to Roboto font */}
+            <p className="text-xl text-hero-stat font-roboto">
               Of business travel expertise
             </p>
           </div>
 
           <div className="pt-4">
+            {/* ✅ Button updated with new styles */}
             <Link
               href="/pilot"
-              className="inline-block bg-active-blue text-white text-base font-medium px-8 py-4 rounded-lg shadow-lg hover:bg-opacity-90 transition-colors"
+              className="inline-block bg-active-blue text-white text-[16px] font-bold font-roboto px-8 py-4 rounded-xl shadow-lg hover:bg-opacity-90 transition-colors"
             >
               Join our pilot program
             </Link>

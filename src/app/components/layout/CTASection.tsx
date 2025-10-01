@@ -3,44 +3,47 @@ import React from 'react';
 
 export const FinalCTASection: React.FC = () => {
   return (
-    // The main section container. I removed the top padding so the image sits flush.
-    <section className="bg-white pb-24">
-      {/* Section 1: Background Image Placeholder */}
-      <div className="relative w-full h-[500px] bg-gray-200">
-        <Image
-          src="https://placehold.co/1920x500/cccccc/969696?text=Background+Image"
-          alt="Office meeting background"
-          layout="fill"
-          objectFit="cover"
-          className="z-0"
-        />
-      </div>
-
-      {/* Section 2: Overlapping Content - now full width with no shadow */}
-      <div className="bg-white rounded-t-3xl lg:rounded-t-[40px] w-full -mt-32 relative z-10 pt-32">
-        {/* This inner div constrains the content to the center of the page */}
+    <section className="bg-white pb-24 md:pb-60">
+      <div className="bg-white rounded-t-3xl lg:rounded-t-[40px] w-full -mt-32 relative z-10">
         <div className="max-w-screen-2xl mx-auto p-8 md:p-16">
+          {/* ✅ Increased gap for more space, items-center vertically aligns the text with the taller image */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+            
             {/* Left Column: Text Content */}
             <div className="text-left">
-              <h2 className="font-poppins text-4xl md:text-5xl font-bold text-[#0D1230] leading-tight mb-6">
-                Let&apos;s Talk Travel Solutions
+              {/* ✅ Title updated to have two lines with different font weights */}
+              <h2 className="font-poppins text-4xl md:text-5xl text-[#0D1230] leading-tight mb-8">
+                <span className="font-normal">Let&apos;s Talk</span>
+                <br />
+                <span className="font-bold">Travel Solutions</span>
               </h2>
-              <p className="font-roboto text-lg text-gray-700 leading-relaxed mb-4">
-                Yousaffer makes corporate travel smarter, safer, and more efficient.
-              </p>
-              <p className="font-roboto text-lg text-gray-700 leading-relaxed">
-                Our platform empowers companies to plan, book, and manage trips effortlessly - while giving them full visibility, control, and cost oversight. With customizable tools tailored to your needs, we simplify travel management and save focus for what&apos;s everyday.
-              </p>
+
+              {/* ✅ Content updated with new text and line breaks */}
+              <div className="font-roboto text-lg text-gray-700 leading-relaxed space-y-4">
+                <p>
+                  Yousaffer makes corporate travel smarter, safer, and more efficient.
+                </p>
+                <p>
+                  Our platform empowers companies to plan, book, and manage trips effortlessly - while giving them full visibility, control, and cost oversight.
+                </p>
+                <p>
+                  With customizable tools tailored to your needs, we simplify travel management and reduce friction at every step. We’re also open to co-developing new solutions to meet your evolving business goals.
+                </p>
+                <p>
+                  Travel with less hassle, more control, and total peace of mind.
+                </p>
+              </div>
             </div>
 
             {/* Right Column: Image */}
-            <div className="relative w-full h-80 rounded-lg overflow-hidden bg-gray-200">
+            {/* ✅ Container height is now flexible. Image uses width/height to set aspect ratio. */}
+            <div className="relative w-full rounded-lg overflow-hidden">
               <Image
-                src="https://placehold.co/600x400/e2e8f0/666?text=Placeholder"
-                alt="Travel Solutions Illustration"
-                layout="fill"
-                objectFit="cover"
+                src="/travelsolutions.png"
+                alt="A collage of travel and business-related imagery."
+                width={600}
+                height={750} // Adjust this height to match your image's natural aspect ratio
+                className="w-full h-auto"
               />
             </div>
           </div>
@@ -49,4 +52,3 @@ export const FinalCTASection: React.FC = () => {
     </section>
   );
 };
-

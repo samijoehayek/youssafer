@@ -1,7 +1,8 @@
 // app/components/layout/Navbar.tsx
 'use client';
 
-import { useState } from 'react';
+// ✅ Import useEffect hook
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -19,16 +20,41 @@ const navLinks = [
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // ✅ State to track if the page has been scrolled
+  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+
+  // ✅ Effect to handle scroll event
+  useEffect(() => {
+    const handleScroll = () => {
+      // Set isScrolled to true if user has scrolled more than 10px
+      if (window.scrollY > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    // Add event listener when component mounts
+    window.addEventListener('scroll', handleScroll);
+
+    // Remove event listener on cleanup
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []); // Empty dependency array ensures this runs only once
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-transparent z-50">
-      {/* ✅ The `container` and `mx-auto` classes have been removed for a full-width layout. */}
-      {/* I've added lg:px-8 for better padding on large screens. */}
+    // ✅ Conditionally apply classes for the background effect
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-white shadow-md' : 'bg-transparent'
+      }`}
+    >
       <nav className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <div className="flex items-center space-x-12">
@@ -41,7 +67,7 @@ export function Navbar() {
                 priority
               />
             </Link>
-            
+
             <ul className="hidden lg:flex items-center space-x-8">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
@@ -65,10 +91,7 @@ export function Navbar() {
 
           <div className="hidden lg:flex items-center space-x-4">
             <LanguageSwitcher />
-            <Link
-              href="/signin"
-              className="font-bold text-active-blue"
-            >
+            <Link href="/signin" className="font-bold text-active-blue">
               Sign In
             </Link>
             <Link
@@ -100,25 +123,32 @@ export function Navbar() {
         </div>
         <ul className="flex flex-col items-center justify-center h-full space-y-8 -mt-10">
           {navLinks.map((link) => {
-             const isActive = pathname === link.href;
-             return (
+            const isActive = pathname === link.href;
+            return (
               <li key={link.href}>
                 <Link
                   href={link.href}
                   className={`text-2xl transition-colors ${
-                    isActive ? 'font-bold text-active-blue' : 'font-normal text-inactive-gray'
+                    isActive
+                      ? 'font-bold text-active-blue'
+                      : 'font-normal text-inactive-gray'
                   }`}
                   onClick={toggleMenu}
                 >
                   {link.label}
                 </Link>
               </li>
-            )})}
+            );
+          })}
           <li className="pt-8">
             <LanguageSwitcher />
           </li>
           <li>
-            <Link href="/signin" className="text-2xl font-bold text-active-blue" onClick={toggleMenu}>
+            <Link
+              href="/signin"
+              className="text-2xl font-bold text-active-blue"
+              onClick={toggleMenu}
+            >
               Sign In
             </Link>
           </li>

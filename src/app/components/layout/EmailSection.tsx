@@ -38,7 +38,7 @@ const DemoSection: React.FC = () => {
               <Zap className="w-4 h-4" />
               <span className="text-sm font-medium">Free Personalized Demo</span>
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            <h2 className="text-4xl md:text-5xl lg:text-5xl font-bold mb-6 leading-tight">
               See it in action
             </h2>
             <p className="text-lg md:text-lg text-white/90 mb-8 leading-relaxed">
