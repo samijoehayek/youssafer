@@ -65,7 +65,6 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="my-16 border-t border-white/20"></div>
 
         {/* Cleaner spacing for the content below */}
         <div className="space-y-16">

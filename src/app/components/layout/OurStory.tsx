@@ -11,9 +11,9 @@ export function OurStory() {
 
       <div className="relative container mx-auto px-6 lg:px-8">
         <h2 className="text-white font-bold text-7xl md:text-9xl lg:text-[120px] leading-none">
-          OUR
+          Our
           <br />
-          STORY
+          Story
         </h2>
 
         <p className="mt-8 text-white text-xl lg:text-xl font-light max-w-4xl">

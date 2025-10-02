@@ -38,7 +38,7 @@ const advantagesData = [
 // Reusable Card Component
 const AdvantageCard = ({ icon: Icon, title, subtitle }: { icon: string; title: string; subtitle: string; }) => (
   <div className="bg-[#F5F5F5] rounded-2xl p-6 flex items-center gap-5 w-full text-left">
-    <div className="flex-shrink-0 w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-sm">
+    <div className="flex-shrink-0 w-16 h-16 bg-white rounded-full flex items-center justify-center">
       <Image src={Icon} alt={title} width={32} height={32} />
     </div>
     <div className="flex-1">

@@ -1,168 +1,165 @@
-// app/components/layout/Navbar.tsx
+// Navbar.tsx (Updated)
+
 'use client';
 
-// ✅ Import useEffect hook
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { LanguageSwitcher } from '../ui/LanguageSwitcher';
+import { DemoModal } from '../ui/DemoModal'; // ✨ ADD THIS: Import the new modal component
 
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/features', label: 'Features' },
-  { href: '/our-story', label: 'Our Story' },
-  { href: '/services', label: 'Services' },
-  { href: '/expertise', label: 'Expertise' },
-  { href: '/contact', label: 'Contact' },
+  // ... your navLinks array remains the same
+  { href: '/#home', label: 'Home' },
+  { href: '/#features', label: 'Features' },
+  { href: '/#our-story', label: 'Our Story' },
+  { href: '/#services', label: 'Services' },
+  { href: '/#expertise', label: 'Expertise' },
+  { href: '/#contact', label: 'Contact' },
 ];
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // ✅ State to track if the page has been scrolled
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false); // ✨ ADD THIS: State for the modal
+
   const pathname = usePathname();
 
-  // ✅ Effect to handle scroll event
+  // ... all your useEffect hooks remain the same ...
   useEffect(() => {
-    const handleScroll = () => {
-      // Set isScrolled to true if user has scrolled more than 10px
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    // Add event listener when component mounts
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-    // Remove event listener on cleanup
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []); // Empty dependency array ensures this runs only once
+  useEffect(() => {
+    if (pathname === '/') {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) setActiveSection(entry.target.id);
+          });
+        },
+        { rootMargin: '-50% 0px -50% 0px' }
+      );
+      navLinks.forEach((link) => {
+        const id = link.href.substring(2);
+        const element = document.getElementById(id);
+        if (element) observer.observe(element);
+      });
+      return () => observer.disconnect();
+    }
+  }, [pathname]);
+
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+  
+  // ✨ ADD THIS: Prevent body scroll when modal is open for better UX
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isModalOpen]);
 
   return (
-    // ✅ Conditionally apply classes for the background effect
-    <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md' : 'bg-transparent'
-      }`}
-    >
-      <nav className="w-full px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          <div className="flex items-center space-x-12">
-            <Link href="/" className="flex-shrink-0">
-              <Image
-                src="/logo.svg"
-                alt="Your Company Logo"
-                width={120}
-                height={40}
-                priority
-              />
-            </Link>
-
-            <ul className="hidden lg:flex items-center space-x-8">
-              {navLinks.map((link) => {
-                const isActive = pathname === link.href;
-                return (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className={`transition-colors hover:text-active-blue ${
-                        isActive
-                          ? 'font-bold text-active-blue'
-                          : 'font-normal text-inactive-gray'
-                      }`}
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-
-          <div className="hidden lg:flex items-center space-x-4">
-            <LanguageSwitcher />
-            <Link href="/signin" className="font-bold text-active-blue">
-              Sign In
-            </Link>
-            <Link
-              href="/demo"
-              className="border border-brand-blue text-brand-blue px-6 py-2 rounded-md hover:bg-brand-blue hover:text-white transition-colors duration-300"
-            >
-              Request a demo
-            </Link>
-          </div>
-
-          <div className="lg:hidden flex items-center">
-            <button onClick={toggleMenu} aria-label="Open main menu">
-              <Menu className="h-6 w-6 text-gray-700" />
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      {/* Mobile Menu */}
-      <div
-        className={`fixed top-0 right-0 h-full w-full bg-white z-50 transform transition-transform duration-300 ease-in-out lg:hidden ${
-          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+    <> {/* ✨ ADD THIS: Use a fragment to wrap header and modal */}
+      <header
+        className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 ${ // Note: z-index is 40 now so modal (z-50) is on top
+          isScrolled || isMenuOpen ? 'bg-white shadow-md' : 'bg-transparent'
         }`}
       >
-        <div className="flex justify-end p-4">
-          <button onClick={toggleMenu} aria-label="Close main menu">
-            <X className="h-6 w-6 text-gray-700" />
-          </button>
+        <nav className="w-full px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20">
+            <div className="flex items-center space-x-12">
+              <Link href="/" className="flex-shrink-0">
+                <Image
+                  src="/logo.svg"
+                  alt="Your Company Logo"
+                  width={120}
+                  height={40}
+                  priority
+                />
+              </Link>
+
+              <ul className="hidden lg:flex items-center space-x-8">
+                {navLinks.map((link) => {
+                  const isActive = pathname === '/' && `/#${activeSection}` === link.href;
+                  return (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className={`transition-colors hover:text-active-blue ${
+                          isActive ? 'font-bold text-active-blue' : 'font-normal text-inactive-gray'
+                        }`}
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+
+            <div className="hidden lg:flex items-center space-x-4">
+              <LanguageSwitcher />
+              <Link href="/signin" className="font-bold text-active-blue">
+                Sign In
+              </Link>
+              {/* ♻️ CHANGE THIS: Changed from Link to button */}
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="border border-brand-blue text-brand-blue px-6 py-2 rounded-md hover:bg-brand-blue hover:text-white transition-colors duration-300"
+              >
+                Request a demo
+              </button>
+            </div>
+
+            <div className="lg:hidden flex items-center">
+              <button onClick={toggleMenu} aria-label="Open main menu">
+                <Menu className="h-6 w-6 text-gray-700" />
+              </button>
+            </div>
+          </div>
+        </nav>
+
+        {/* Mobile Menu */}
+        <div
+          className={`fixed top-0 right-0 h-full w-full bg-white z-50 transform transition-transform duration-300 ease-in-out lg:hidden ${
+            isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        >
+          {/* ... mobile menu content ... */}
+          <ul className="flex flex-col items-center justify-center h-full space-y-8 -mt-10">
+            {/* ... other mobile links ... */}
+            <li>
+              {/* ♻️ CHANGE THIS: Changed from Link to button for mobile too */}
+              <button
+                onClick={() => {
+                  setIsModalOpen(true);
+                  toggleMenu(); // Close the mobile menu when opening the modal
+                }}
+                className="text-2xl border border-brand-blue text-brand-blue px-8 py-3 rounded-md"
+              >
+                Request a demo
+              </button>
+            </li>
+          </ul>
         </div>
-        <ul className="flex flex-col items-center justify-center h-full space-y-8 -mt-10">
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className={`text-2xl transition-colors ${
-                    isActive
-                      ? 'font-bold text-active-blue'
-                      : 'font-normal text-inactive-gray'
-                  }`}
-                  onClick={toggleMenu}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            );
-          })}
-          <li className="pt-8">
-            <LanguageSwitcher />
-          </li>
-          <li>
-            <Link
-              href="/signin"
-              className="text-2xl font-bold text-active-blue"
-              onClick={toggleMenu}
-            >
-              Sign In
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/demo"
-              className="text-2xl border border-brand-blue text-brand-blue px-8 py-3 rounded-md"
-              onClick={toggleMenu}
-            >
-              Request a demo
-            </Link>
-          </li>
-        </ul>
-      </div>
-    </header>
+      </header>
+      
+      {/* ✨ ADD THIS: Render the modal component */}
+      <DemoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    </>
   );
 }
