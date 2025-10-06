@@ -26,18 +26,22 @@ export default function Home() {
         <SmarterSoftware />
       </section>
       <div className="bg-white h-24" />
-      <section id="services">
+      <section>
         <EcosystemSection />
       </section>
       <div className="bg-white h-24" />
-      <BeyondSoftwareSection />
+      <section id="services">
+        <BeyondSoftwareSection />
+      </section>
       <div className="bg-white h-24" />
-      <AligningExpectationsSection />
+      <section id="expertise">
+        <AligningExpectationsSection />
+      </section>
       <div className="bg-white h-24" />
       <section>
         <DemoSection />
       </section>
-      <section id="expertise">
+      <section>
         <AdvantagesSection />
       </section>
 
@@ -50,11 +54,10 @@ export default function Home() {
           quality={100}
         />
       </section>
-
-      <FinalCTASection />
       <section id="contact">
-        <Footer />
+        <FinalCTASection />
       </section>
+      <Footer />
     </main>
   );
 }

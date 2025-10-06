@@ -41,7 +41,7 @@ export const FinalCTASection: React.FC = () => {
               <Image
                 src="/travelsolutions.png"
                 alt="A collage of travel and business-related imagery."
-                width={600}
+                width={800}
                 height={750} // Adjust this height to match your image's natural aspect ratio
                 className="w-full h-auto"
               />

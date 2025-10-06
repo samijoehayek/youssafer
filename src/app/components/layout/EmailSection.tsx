@@ -21,8 +21,8 @@ const DemoSection: React.FC = () => {
 
   return (
     <div className="w-full py-12 px-6 lg:px-8">
-      {/* Main container with gradient, width constraint, centering, and overflow for clipping */}
-      <div className="relative w-full mx-auto max-w-screen-xl overflow-hidden bg-gradient-to-br from-[#1a2744] via-[#1e3a5f] to-[#2a4a7f] rounded-3xl px-8 py-12 md:px-16 md:py-12">
+      {/* Main container with solid background color */}
+      <div className="relative w-full mx-auto max-w-screen-xl overflow-hidden rounded-3xl px-8 py-12 md:px-16 md:py-12" style={{ backgroundColor: '#171F51' }}>
         
         {/* Background pattern overlay */}
         <div className="absolute inset-0 opacity-10">
@@ -34,32 +34,34 @@ const DemoSection: React.FC = () => {
         <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
           {/* Left content */}
           <div className="flex-1 text-white max-w-2xl">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-              <Zap className="w-4 h-4" />
+            <div className="inline-flex items-center gap-2 backdrop-blur-sm rounded-full px-4 py-2 mb-6" style={{ backgroundColor: '#171F51', border: '1px solid #005593' }}>
+              <Zap className="w-4 h-4" fill="white" stroke="white" />
               <span className="text-sm font-medium">Free Personalized Demo</span>
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-5xl font-bold mb-6 leading-tight">
+            <h2 className="text-3xl md:text-4xl lg:text-4xl font-bold mb-6 leading-tight">
               See it in action
             </h2>
             <p className="text-lg md:text-lg text-white/90 mb-8 leading-relaxed" style={{ fontFamily: 'var(--font-roboto)' }}>
               Get a personalized demo tailored to your business <br /> needs and discover how we transform travel management
             </p>
             <div className="mb-8">
-              <div className="flex flex-col sm:flex-row gap-3 max-w-md">
-                <input
-                  type="email"
-                  placeholder="Enter your email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  onKeyPress={handleKeyPress}
-                  className="flex-1 px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent transition-all"
-                />
-                <button
-                  onClick={handleSubmit}
-                  className="px-6 py-3 bg-[#5b6cff] hover:bg-[#4a5bef] text-white font-medium rounded-lg transition-colors duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
-                >
-                  <Send className="w-4 h-4" />
-                </button>
+              <div className="flex gap-3 max-w-lg">
+                <div className="flex-1 relative flex items-center rounded-xl" style={{ backgroundColor: '#0D1230', border: '1px solid #202C73' }}>
+                  <input
+                    type="email"
+                    placeholder="Enter your email address"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    onKeyPress={handleKeyPress}
+                    className="flex-1 px-4 py-3 bg-transparent text-white placeholder-white/50 focus:outline-none"
+                  />
+                  <button
+                    onClick={handleSubmit}
+                    className="px-4 py-4 m-2 bg-[#5b6cff] hover:bg-[#4a5bef] text-white font-medium rounded-lg transition-colors duration-200 flex items-center justify-center shadow-lg hover:shadow-xl"
+                  >
+                    <Send className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
             </div>
             <div className="flex flex-wrap gap-4 text-sm">
@@ -100,4 +102,3 @@ const DemoSection: React.FC = () => {
 };
 
 export default DemoSection;
-
