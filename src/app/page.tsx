@@ -1,14 +1,14 @@
-import Homepage from './components/layout/Homepage';
-import { OurStory } from './components/layout/OurStory';
-import { SmarterSoftware } from './components/layout/SmarterSoftwareSection';
-import { EcosystemSection } from './components/layout/EcosystemSection';
-import { BeyondSoftwareSection } from './components/layout/BeyondSoftwareSection';
-import { AligningExpectationsSection } from './components/layout/AligningExpectationsSection';
-import DemoSection from './components/layout/EmailSection';
-import { AdvantagesSection } from './components/layout/IntelligentDesignSection';
-import { FinalCTASection } from './components/layout/CTASection';
-import { Footer } from './components/layout/Footer';
-import Image from 'next/image';
+import Homepage from "./components/layout/Homepage";
+import { OurStory } from "./components/layout/OurStory";
+import { SmarterSoftware } from "./components/layout/SmarterSoftwareSection";
+import { EcosystemSection } from "./components/layout/EcosystemSection";
+import { BeyondSoftwareSection } from "./components/layout/BeyondSoftwareSection";
+import { AligningExpectationsSection } from "./components/layout/AligningExpectationsSection";
+import DemoSection from "./components/layout/EmailSection";
+import { AdvantagesSection } from "./components/layout/IntelligentDesignSection";
+import { FinalCTASection } from "./components/layout/CTASection";
+import { Footer } from "./components/layout/Footer";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -34,7 +34,7 @@ export default function Home() {
       <div className="bg-white h-24" />
       <AligningExpectationsSection />
       <div className="bg-white h-24" />
-      <section id="contact">
+      <section>
         <DemoSection />
       </section>
       <section id="expertise">
@@ -46,13 +46,15 @@ export default function Home() {
           src="/wwpeople.png"
           alt="A diverse group of professionals working together globally."
           fill
-          style={{ objectFit: 'cover' }}
+          style={{ objectFit: "cover" }}
           quality={100}
         />
       </section>
 
       <FinalCTASection />
-      <Footer />
+      <section id="contact">
+        <Footer />
+      </section>
     </main>
   );
 }

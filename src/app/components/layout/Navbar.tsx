@@ -13,8 +13,8 @@ import { DemoModal } from '../ui/DemoModal'; // ✨ ADD THIS: Import the new mod
 const navLinks = [
   // ... your navLinks array remains the same
   { href: '/#home', label: 'Home' },
-  { href: '/#features', label: 'Features' },
   { href: '/#our-story', label: 'Our Story' },
+  { href: '/#features', label: 'Features' },
   { href: '/#services', label: 'Services' },
   { href: '/#expertise', label: 'Expertise' },
   { href: '/#contact', label: 'Contact' },

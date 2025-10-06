@@ -16,8 +16,16 @@ export function OurStory() {
           Story
         </h2>
 
-        <p className="mt-8 text-white text-xl lg:text-xl font-light max-w-4xl">
-          We’re not just building travel tech — we’re reshaping how business travel works across the Middle East and Africa. Backed by decades of experience in corporate travel and operational design, Yousaffer empowers Travel Agencies, TMCs, and Corporate Clients with smart tools and expert support that simplify travel, align with business goals, and elevate the entire experience.
+        <p
+          className="mt-8 text-white text-xl lg:text-xl font-light max-w-4xl"
+          style={{ fontFamily: "var(--font-roboto)" }}
+        >
+          We’re not just building travel tech — we’re reshaping how business
+          travel works across the Middle East and Africa. Backed by decades of
+          experience in corporate travel and operational design, Yousaffer
+          empowers Travel Agencies, TMCs, and Corporate Clients with smart tools
+          and expert support that simplify travel, align with business goals,
+          and elevate the entire experience.
         </p>
 
         {/* Here we include our interactive slider component */}

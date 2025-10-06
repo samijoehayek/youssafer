@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-// ✨ 1. Imported the 'CheckCircle' (filled) icon instead of 'CheckCircle2'
-import { CheckCircle } from "lucide-react";
 
 // Data for each node (no changes here)
 const ecosystemData = [
@@ -35,7 +33,11 @@ const ecosystemData = [
       "Traveler data & profiles",
       "Support in change management and adoption",
     ],
-    expects: ["Policy enforcement", "Approval automation", "Duty of care tracking"],
+    expects: [
+      "Policy enforcement",
+      "Approval automation",
+      "Duty of care tracking",
+    ],
   },
   {
     name: "Employees & Travelers",
@@ -43,7 +45,11 @@ const ecosystemData = [
     icon: "/icons/Employees.svg",
     title: "Employees & Travelers",
     relationship: "Ecosystem Relationship",
-    requires: ["Accurate personal profiles", "Travel preferences", "Timely expense submissions"],
+    requires: [
+      "Accurate personal profiles",
+      "Travel preferences",
+      "Timely expense submissions",
+    ],
     expects: [
       "Intuitive booking experience",
       "Mobile access and support",
@@ -95,7 +101,13 @@ function hexToRgba(hex: string, alpha: number): string {
 }
 
 // InteractiveNodes component (no changes here)
-const InteractiveNodes = ({ activeIndex, setActiveIndex }: { activeIndex: number, setActiveIndex: (index: number) => void }) => {
+const InteractiveNodes = ({
+  activeIndex,
+  setActiveIndex,
+}: {
+  activeIndex: number;
+  setActiveIndex: (index: number) => void;
+}) => {
   return (
     <div className="w-full flex flex-col items-center mt-20 lg:mt-0">
       {/* Desktop Layout */}
@@ -114,7 +126,9 @@ const InteractiveNodes = ({ activeIndex, setActiveIndex }: { activeIndex: number
               {/* Node Circle Container */}
               <div className="relative flex items-center justify-center">
                 <div
-                  className={`absolute w-32 h-32 rounded-full transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`}
+                  className={`absolute w-32 h-32 rounded-full transition-opacity duration-300 ${
+                    isActive ? "opacity-100" : "opacity-0"
+                  }`}
                   style={{ backgroundColor: hexToRgba(node.color, 0.1) }}
                 ></div>
                 <div
@@ -125,11 +139,13 @@ const InteractiveNodes = ({ activeIndex, setActiveIndex }: { activeIndex: number
                   <div
                     className="w-8 h-8 transition-colors duration-300"
                     style={{
-                      backgroundColor: isActive ? node.color : 'rgba(13, 18, 48, 1)',
+                      backgroundColor: isActive
+                        ? node.color
+                        : "rgba(13, 18, 48, 1)",
                       maskImage: `url(${node.icon})`,
-                      maskSize: 'contain',
-                      maskRepeat: 'no-repeat',
-                      maskPosition: 'center',
+                      maskSize: "contain",
+                      maskRepeat: "no-repeat",
+                      maskPosition: "center",
                     }}
                   />
                 </div>
@@ -138,11 +154,16 @@ const InteractiveNodes = ({ activeIndex, setActiveIndex }: { activeIndex: number
               {/* Button */}
               <button
                 onClick={() => setActiveIndex(index)}
-                className="font-roboto font-semibold py-2.5 px-5 rounded-lg transition-colors duration-300 text-center text-base mt-6"
+                className={`py-2.5 px-5 rounded-lg transition-colors duration-300 text-center text-base mt-6 ${
+                  isActive ? "font-semibold" : "font-medium"
+                }`}
                 style={{
                   backgroundColor: isActive ? node.color : "#FFFFFF",
                   color: isActive ? "white" : "#333",
-                  border: isActive ? 'none' : '1px solid rgba(223, 223, 223, 1)',
+                  border: isActive
+                    ? "none"
+                    : "1px solid rgba(223, 223, 223, 1)",
+                  fontFamily: "var(--font-roboto)",
                 }}
               >
                 {node.name}
@@ -173,32 +194,40 @@ const InteractiveNodes = ({ activeIndex, setActiveIndex }: { activeIndex: number
               onClick={() => setActiveIndex(index)}
             >
               <div className="relative flex items-center justify-center">
+                <div
+                  className={`absolute w-24 h-24 rounded-full transition-opacity duration-300 ${
+                    isActive ? "opacity-100" : "opacity-0"
+                  }`}
+                  style={{ backgroundColor: hexToRgba(node.color, 0.1) }}
+                ></div>
+                <div
+                  className="relative w-16 h-16 rounded-full border-4 flex items-center justify-center transition-all duration-300 cursor-pointer bg-white"
+                  style={{ borderColor: node.color }}
+                >
                   <div
-                    className={`absolute w-24 h-24 rounded-full transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`}
-                    style={{ backgroundColor: hexToRgba(node.color, 0.1) }}
-                  ></div>
-                  <div
-                    className="relative w-16 h-16 rounded-full border-4 flex items-center justify-center transition-all duration-300 cursor-pointer bg-white"
-                    style={{ borderColor: node.color }}
-                  >
-                    <div
-                      className="w-8 h-8 transition-colors duration-300"
-                      style={{
-                        backgroundColor: isActive ? node.color : 'rgba(13, 18, 48, 1)',
-                        maskImage: `url(${node.icon})`,
-                        maskSize: 'contain',
-                        maskRepeat: 'no-repeat',
-                        maskPosition: 'center',
-                      }}
-                    />
-                  </div>
+                    className="w-8 h-8 transition-colors duration-300"
+                    style={{
+                      backgroundColor: isActive
+                        ? node.color
+                        : "rgba(13, 18, 48, 1)",
+                      maskImage: `url(${node.icon})`,
+                      maskSize: "contain",
+                      maskRepeat: "no-repeat",
+                      maskPosition: "center",
+                    }}
+                  />
+                </div>
               </div>
               <button
-                className="font-roboto font-semibold py-2 px-5 rounded-lg transition-colors duration-300 text-center text-base"
+                className={`py-2 px-5 rounded-lg transition-colors duration-300 text-center text-base ${
+                  isActive ? "font-semibold" : "font-medium"
+                }`}
                 style={{
                   backgroundColor: isActive ? node.color : "#FFFFFF",
                   color: isActive ? "white" : "#333",
-                  border: isActive ? 'none' : '1px solid rgba(223, 223, 223, 1)',
+                  border: isActive
+                    ? "none"
+                    : "1px solid rgba(223, 223, 223, 1)",
                 }}
               >
                 {node.name}
@@ -214,23 +243,21 @@ const InteractiveNodes = ({ activeIndex, setActiveIndex }: { activeIndex: number
 // =================================================================================
 // ✨ 2. MODIFIED COMPONENT: EcosystemDetailCard updated with your requests
 // =================================================================================
-const EcosystemDetailCard = ({ data }: { data: typeof ecosystemData[0] }) => {
+const EcosystemDetailCard = ({ data }: { data: (typeof ecosystemData)[0] }) => {
   return (
     // Reduced horizontal padding to make content wider
     <div className="w-full bg-[#F3F4F6] rounded-3xl py-8 lg:py-12 px-4 lg:px-6 mt-16 text-left">
       {/* Header Section - Icon is now neutral black */}
       <div className="flex items-start gap-4 mb-8 px-2">
-        <div
-          className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
-        >
+        <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
           <div
             className="w-8 h-8"
             style={{
-              backgroundColor: '#111827', // Neutral dark color for the icon
+              backgroundColor: "#111827", // Neutral dark color for the icon
               maskImage: `url(${data.icon})`,
-              maskSize: 'contain',
-              maskRepeat: 'no-repeat',
-              maskPosition: 'center',
+              maskSize: "contain",
+              maskRepeat: "no-repeat",
+              maskPosition: "center",
             }}
           />
         </div>
@@ -245,11 +272,22 @@ const EcosystemDetailCard = ({ data }: { data: typeof ecosystemData[0] }) => {
         {/* Left Column */}
         <div className="bg-white rounded-2xl p-6">
           <h4 className="font-bold text-gray-800">What Skyvix Require</h4>
-          <p className="text-sm text-gray-500 mb-4">What We Need From The Corporate</p>
+          <p className="text-sm text-gray-500 mb-4">
+            What We Need From The Corporate
+          </p>
           <ul className="space-y-2">
             {data.requires.map((item) => (
-              <li key={item} className="flex items-center gap-4 bg-[#FAFAFA] p-4 rounded-lg">
-                <CheckCircle className="w-6 h-6 text-black flex-shrink-0" />
+              <li
+                key={item}
+                className="flex items-center gap-4 bg-[#FAFAFA] p-4 rounded-lg"
+              >
+                <Image
+                  src="/icons/Checkmark.svg"
+                  alt="check"
+                  width={24}
+                  height={24}
+                />
+
                 <span className="text-gray-800 font-medium">{item}</span>
               </li>
             ))}
@@ -258,12 +296,24 @@ const EcosystemDetailCard = ({ data }: { data: typeof ecosystemData[0] }) => {
 
         {/* Right Column */}
         <div className="bg-white rounded-2xl p-6">
-          <h4 className="font-bold text-gray-800">What The Client Expect In Return</h4>
-          <p className="text-sm text-gray-500 mb-4">What They Expect From Skyvix</p>
+          <h4 className="font-bold text-gray-800">
+            What The Client Expect In Return
+          </h4>
+          <p className="text-sm text-gray-500 mb-4">
+            What They Expect From Skyvix
+          </p>
           <ul className="space-y-2">
             {data.expects.map((item) => (
-              <li key={item} className="flex items-center gap-4 bg-[#FAFAFA] p-4 rounded-lg">
-                <CheckCircle className="w-6 h-6 text-black flex-shrink-0" />
+              <li
+                key={item}
+                className="flex items-center gap-4 bg-[#FAFAFA] p-4 rounded-lg"
+              >
+                <Image
+                  src="/icons/Checkmark.svg"
+                  alt="check"
+                  width={24}
+                  height={24}
+                />
                 <span className="text-gray-800 font-medium">{item}</span>
               </li>
             ))}
@@ -274,10 +324,9 @@ const EcosystemDetailCard = ({ data }: { data: typeof ecosystemData[0] }) => {
   );
 };
 
-
 // Main section component (no changes here)
 export function EcosystemSection() {
-  const [activeIndex, setActiveIndex] = useState(2); 
+  const [activeIndex, setActiveIndex] = useState(2);
 
   return (
     <section className="bg-white min-h-[1200px] w-full flex flex-col items-center justify-center py-24 px-6 text-center">
@@ -290,7 +339,10 @@ export function EcosystemSection() {
       </h2>
 
       {/* Subtitle */}
-      <p className="font-roboto text-xl lg:text-[24px] font-normal text-[#0D1230] max-w-4xl mt-8">
+      <p
+        className="text-xl lg:text-[24px] font-normal text-[#0D1230] max-w-4xl mt-8"
+        style={{ fontFamily: "var(--font-roboto)" }}
+      >
         Our Online Booking Tool (Skyvix) connects all key departments and
         partners—each with unique expectations and contributions. Here’s how we
         work together to unlock full value.
@@ -298,11 +350,11 @@ export function EcosystemSection() {
 
       {/* Interactive Components Container */}
       <div className="w-full max-w-7xl mt-16">
-        <InteractiveNodes 
-          activeIndex={activeIndex} 
-          setActiveIndex={setActiveIndex} 
+        <InteractiveNodes
+          activeIndex={activeIndex}
+          setActiveIndex={setActiveIndex}
         />
-        
+
         <EcosystemDetailCard data={ecosystemData[activeIndex]} />
       </div>
     </section>

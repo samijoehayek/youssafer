@@ -84,7 +84,7 @@ const SliderCard = ({
       <h3 className="font-poppins font-bold text-2xl lg:text-[28px] text-[#0D1230]">
         {card.title}
       </h3>
-      <p className="font-roboto font-normal text-base text-[#0D1230] mt-1">
+      <p className="font-normal text-base text-[#0D1230] mt-1" style={{ fontFamily: 'var(--font-roboto)' }}>
         {card.subtitle}
       </p>
     </div>
@@ -123,7 +123,7 @@ export function BeyondSoftwareSection() {
             <h2 className="font-poppins text-6xl md:text-[65px] font-bold text-[#293893] leading-tight mt-1">
               We Power Travel Operations
             </h2>
-            <p className="font-poppins text-xl md:text-[24px] font-normal mt-8 text-gray-700">
+            <p className="font-poppins text-xl md:text-[24px] font-normal mt-8 text-gray-700" style={{ fontFamily: 'var(--font-roboto)' }}>
               Boost your travel capabilities with services designed to optimize
               both digital and offline experiences.
             </p>

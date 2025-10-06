@@ -21,7 +21,7 @@ const features = [
     title: "Seamless Profile Management",
     subtitle:
       "Centralized traveler and company profiles for easy access and control.",
-    image: "/featurebox.png",
+    image: "/smartsoftware.png",
   },
   {
     id: "policy",
@@ -29,7 +29,7 @@ const features = [
     icon: ShieldCheck,
     title: "Strict Policy Enforcement",
     subtitle: "Automated travel policy application to ensure compliance.",
-    image: "/featurebox.png",
+    image: "/smartsoftware.png",
   },
   {
     id: "booking",
@@ -37,7 +37,7 @@ const features = [
     icon: Search,
     title: "Intuitive Search & Booking",
     subtitle: "Smart, real-time booking across flights, hotels, and more.",
-    image: "/featurebox.png",
+    image: "/smartsoftware.png",
   },
   {
     id: "workflows",
@@ -45,7 +45,7 @@ const features = [
     icon: CheckSquare,
     title: "Custom Approval Workflows",
     subtitle: "Customizable approval layers to match your internal processes.",
-    image: "/featurebox.png",
+    image: "/smartsoftware.png",
   },
   {
     id: "multi-entity",
@@ -53,7 +53,7 @@ const features = [
     icon: Building,
     title: "Flexible Multi-Entity Management",
     subtitle: "Support for multiple companies, regions, and points of sale.",
-    image: "/featurebox.png",
+    image: "/smartsoftware.png",
   },
   {
     id: "reports",
@@ -62,7 +62,7 @@ const features = [
     title: "Insightful Reports & Compliance",
     subtitle:
       "Actionable insights with full visibility and audit-ready reports.",
-    image: "/featurebox.png",
+    image: "/smartsoftware.png",
   },
 ];
 
@@ -127,7 +127,7 @@ export function InteractiveFeatureBox() {
             <h3 className="font-poppins font-semibold text-5xl leading-tight text-active-blue">
               {activeFeature.name}
             </h3>
-            <p className="text-lg text-gray-600 mt-4">
+            <p className="text-lg text-gray-600 mt-4" style={{ fontFamily: 'var(--font-roboto)' }}>
               {activeFeature.subtitle}
             </p>
             <div className="mt-18">

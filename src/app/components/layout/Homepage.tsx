@@ -47,7 +47,10 @@ const Homepage = () => {
           </h1>
 
           {/* ✅ Body text updated to Roboto font */}
-          <p className="text-xl lg:text-[20px] text-hero-desc mx-auto lg:mx-0 font-roboto">
+          <p
+            className="text-xl lg:text-[20px] text-hero-desc mx-auto lg:mx-0"
+            style={{ fontFamily: "var(--font-roboto)" }}
+          >
             Yousaffer empowers Travel Agents, TMCs, and Corporate clients across
             <br />
             the Middle East and Africa with smart tech and expert consultancy.
@@ -58,11 +61,16 @@ const Homepage = () => {
             <br />
           </p>
 
-          <div className="flex flex-col items-center lg:items-start mt-2">
+          <div
+            className="flex flex-col items-center lg:items-start mt-2"
+            style={{ fontFamily: "var(--font-roboto)" }}
+          >
             {/* ✅ Statistic title updated to Poppins font */}
-            <p className="text-3xl font-bold text-hero-stat font-poppins">20+ years</p>
+            <p className="text-3xl font-bold text-hero-stat font-poppins">
+              20+ years
+            </p>
             {/* ✅ Statistic subtitle updated to Roboto font */}
-            <p className="text-xl text-hero-stat font-roboto">
+            <p className="text-xl text-hero-stat">
               Of business travel expertise
             </p>
           </div>
@@ -72,6 +80,7 @@ const Homepage = () => {
             <Link
               href="/pilot"
               className="inline-block bg-active-blue text-white text-[16px] font-bold font-roboto px-8 py-4 rounded-xl shadow-lg hover:bg-opacity-90 transition-colors"
+              style={{ fontFamily: "var(--font-roboto)" }}
             >
               Join our pilot program
             </Link>

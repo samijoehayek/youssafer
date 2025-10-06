@@ -75,7 +75,7 @@ const InfoCard = ({
         <h3 className="font-poppins font-bold text-xl text-gray-800">
           {title}
         </h3>
-        <p className="font-roboto text-base text-gray-600 mt-2">
+        <p className="text-base text-gray-600 mt-2" style={{ fontFamily: 'var(--font-roboto)' }}>
           {subtitle}
         </p>
       </div>
@@ -112,7 +112,7 @@ export function AligningExpectationsSection() {
           The Power of Expertise
         </h2>
         
-        <p className="font-poppins text-xl md:text-[24px] font-normal mt-8 text-gray-700 max-w-3xl">
+        <p className="font-poppins text-xl md:text-[24px] font-normal mt-8 text-gray-700 max-w-3xl" style={{ fontFamily: 'var(--font-roboto)' }}>
           With our blend of hands-on corporate travel expertise and cutting-edge tech, we go beyond tools—we solve real business challenges.
         </p>
 

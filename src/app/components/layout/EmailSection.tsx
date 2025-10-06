@@ -41,7 +41,7 @@ const DemoSection: React.FC = () => {
             <h2 className="text-4xl md:text-5xl lg:text-5xl font-bold mb-6 leading-tight">
               See it in action
             </h2>
-            <p className="text-lg md:text-lg text-white/90 mb-8 leading-relaxed">
+            <p className="text-lg md:text-lg text-white/90 mb-8 leading-relaxed" style={{ fontFamily: 'var(--font-roboto)' }}>
               Get a personalized demo tailored to your business <br /> needs and discover how we transform travel management
             </p>
             <div className="mb-8">

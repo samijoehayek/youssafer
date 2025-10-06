@@ -19,7 +19,7 @@ export const FinalCTASection: React.FC = () => {
               </h2>
 
               {/* ✅ Content updated with new text and line breaks */}
-              <div className="font-roboto text-lg text-gray-700 leading-relaxed space-y-4">
+              <div className="text-lg text-gray-700 leading-relaxed space-y-4" style={{ fontFamily: 'var(--font-roboto)' }}>
                 <p>
                   Yousaffer makes corporate travel smarter, safer, and more efficient.
                 </p>
