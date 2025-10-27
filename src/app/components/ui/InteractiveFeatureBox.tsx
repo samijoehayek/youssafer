@@ -22,6 +22,7 @@ const features = [
     subtitle:
       "Centralized traveler and company profiles for easy access and control.",
     image: "/smartsoftware.png",
+    mobileImage: "/profileUpdatesMobile.png",
   },
   {
     id: "policy",
@@ -30,6 +31,7 @@ const features = [
     title: "Strict Policy Enforcement",
     subtitle: "Automated travel policy application to ensure compliance.",
     image: "/smartsoftware.png",
+    mobileImage: "/profileUpdatesMobile.png",
   },
   {
     id: "booking",
@@ -38,6 +40,7 @@ const features = [
     title: "Intuitive Search & Booking",
     subtitle: "Smart, real-time booking across flights, hotels, and more.",
     image: "/smartsoftware.png",
+    mobileImage: "/profileUpdatesMobile.png",
   },
   {
     id: "workflows",
@@ -46,6 +49,7 @@ const features = [
     title: "Custom Approval Workflows",
     subtitle: "Customizable approval layers to match your internal processes.",
     image: "/smartsoftware.png",
+    mobileImage: "/profileUpdatesMobile.png",
   },
   {
     id: "multi-entity",
@@ -54,6 +58,7 @@ const features = [
     title: "Flexible Multi-Entity Management",
     subtitle: "Support for multiple companies, regions, and points of sale.",
     image: "/smartsoftware.png",
+    mobileImage: "/profileUpdatesMobile.png",
   },
   {
     id: "reports",
@@ -63,13 +68,14 @@ const features = [
     subtitle:
       "Actionable insights with full visibility and audit-ready reports.",
     image: "/smartsoftware.png",
+    mobileImage: "/profileUpdatesMobile.png",
   },
 ];
 
 const PlaceholderButton = () => (
   <Link
     href="/demo"
-    className="text-xl border border-active-blue text-active-blue px-8 py-3 rounded-md"
+    className="text-base md:text-xl border border-active-blue text-active-blue px-6 py-2.5 md:px-8 md:py-3 rounded-md inline-block"
   >
     Request a demo
   </Link>
@@ -81,8 +87,8 @@ export function InteractiveFeatureBox() {
   const activeFeature = features[activeFeatureIndex];
 
   return (
-    <div className="bg-white w-full h-full rounded-[30px] shadow-2xl p-6 lg:p-8 flex flex-col">
-      {/* Mini Navbar - ✨ UPDATED SECTION ✨ */}
+    <div className="bg-white w-full h-full rounded-[30px] shadow-2xl p-4 md:p-6 lg:p-8 flex flex-col">
+      {/* Mini Navbar */}
       <nav className="w-full bg-[#F8F8F8] rounded-xl p-2">
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
           {features.map((feature, index) => {
@@ -91,24 +97,21 @@ export function InteractiveFeatureBox() {
               <button
                 key={feature.name}
                 onClick={() => setActiveFeatureIndex(index)}
-                // We removed the background/shadow from the button itself
-                className="flex items-center justify-center text-center gap-2 p-3 rounded-lg transition-colors duration-300 group"
+                className="flex items-center justify-center text-center gap-2 p-2 md:p-3 rounded-lg transition-colors duration-300 group"
               >
-                {/* 1. Icon is now wrapped in a div to create the circle */}
                 <div
-                  className={`flex items-center justify-center w-9 h-9 rounded-full transition-all duration-300 ${
+                  className={`flex items-center justify-center w-8 h-8 md:w-9 md:h-9 rounded-full transition-all duration-300 ${
                     isActive ? "bg-[#F1570A]" : "bg-white"
                   }`}
                 >
                   <feature.icon
-                    className={`w-5 h-5 transition-colors duration-300 ${
+                    className={`w-4 h-4 md:w-5 md:h-5 transition-colors duration-300 ${
                       isActive ? "text-white" : "text-gray-500"
                     }`}
                   />
                 </div>
-                {/* 2. Text color changes based on active state */}
                 <span
-                  className={`font-medium text-sm transition-colors duration-300 ${
+                  className={`font-medium text-xs md:text-sm transition-colors duration-300 ${
                     isActive ? "text-[#F1570A]" : "text-gray-600"
                   }`}
                 >
@@ -120,24 +123,38 @@ export function InteractiveFeatureBox() {
         </div>
       </nav>
 
-      {/* Content Area - No changes here */}
-      <div className="flex-grow flex flex-col md:flex-row gap-8 lg:gap-12 mt-4 items-center">
-        <div className="w-full md:w-[35%] lg:w-[30%] flex flex-col justify-center pl-8">
+      {/* Content Area */}
+      <div className="flex-grow flex flex-col md:flex-row gap-6 md:gap-8 lg:gap-12 mt-6 md:mt-4 items-center md:items-start">
+        {/* Text Content */}
+        <div className="w-full md:w-[35%] lg:w-[30%] flex flex-col justify-center px-4 md:pl-8">
           <div className="text-left">
-            <h3 className="font-poppins font-semibold text-5xl leading-tight text-active-blue">
+            <h3 className="font-poppins font-semibold text-2xl md:text-4xl lg:text-5xl leading-tight text-active-blue">
               {activeFeature.name}
             </h3>
-            <p className="text-lg text-gray-600 mt-4" style={{ fontFamily: 'var(--font-roboto)' }}>
+            <p className="text-sm md:text-base lg:text-lg text-gray-600 mt-3 md:mt-4" style={{ fontFamily: 'var(--font-roboto)' }}>
               {activeFeature.subtitle}
             </p>
-            <div className="mt-18">
+            <div className="mt-6 md:mt-18">
               <PlaceholderButton />
             </div>
           </div>
         </div>
-        <div className="w-full md:w-[65%] lg:w-[70%] relative aspect-video">
+
+        {/* Image Content - Desktop */}
+        <div className="hidden md:block w-full md:w-[65%] lg:w-[70%] relative aspect-video">
           <Image
             src={activeFeature.image}
+            alt={activeFeature.title}
+            fill
+            className="object-contain"
+            priority
+          />
+        </div>
+
+        {/* Image Content - Mobile (tall aspect ratio) */}
+        <div className="block md:hidden w-full relative h-[500px]">
+          <Image
+            src={activeFeature.mobileImage}
             alt={activeFeature.title}
             fill
             className="object-contain"

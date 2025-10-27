@@ -240,20 +240,17 @@ const InteractiveNodes = ({
   );
 };
 
-// =================================================================================
-// ✨ 2. MODIFIED COMPONENT: EcosystemDetailCard updated with your requests
-// =================================================================================
+// EcosystemDetailCard component (no changes here)
 const EcosystemDetailCard = ({ data }: { data: (typeof ecosystemData)[0] }) => {
   return (
-    // Reduced horizontal padding to make content wider
     <div className="w-full bg-[#F3F4F6] rounded-3xl py-8 lg:py-12 px-4 lg:px-6 mt-16 text-left">
-      {/* Header Section - Icon is now neutral black */}
+      {/* Header Section */}
       <div className="flex items-start gap-4 mb-8 px-2">
         <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0">
           <div
             className="w-8 h-8"
             style={{
-              backgroundColor: "#111827", // Neutral dark color for the icon
+              backgroundColor: "#111827",
               maskImage: `url(${data.icon})`,
               maskSize: "contain",
               maskRepeat: "no-repeat",
@@ -267,7 +264,7 @@ const EcosystemDetailCard = ({ data }: { data: (typeof ecosystemData)[0] }) => {
         </div>
       </div>
 
-      {/* Two Column Layout - Reduced gap to bring them closer */}
+      {/* Two Column Layout */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Left Column */}
         <div className="bg-white rounded-2xl p-6">
@@ -287,7 +284,6 @@ const EcosystemDetailCard = ({ data }: { data: (typeof ecosystemData)[0] }) => {
                   width={24}
                   height={24}
                 />
-
                 <span className="text-gray-800 font-medium">{item}</span>
               </li>
             ))}
@@ -324,27 +320,27 @@ const EcosystemDetailCard = ({ data }: { data: (typeof ecosystemData)[0] }) => {
   );
 };
 
-// Main section component (no changes here)
+// Main section component - UPDATED WITH MOBILE FONT SIZES
 export function EcosystemSection() {
   const [activeIndex, setActiveIndex] = useState(2);
 
   return (
     <section className="bg-white min-h-[1200px] w-full flex flex-col items-center justify-center py-24 px-6 text-center">
       {/* Main Titles */}
-      <h2 className="font-poppins text-5xl lg:text-[65px] font-normal text-black leading-tight">
-        Our Ecosystem. Seamless Collaboration.
+      <h2 className="font-poppins text-[28px] lg:text-[65px] font-normal text-black leading-tight">
+        Our Ecosystem. <br />Seamless Collaboration.
       </h2>
-      <h2 className="font-poppins text-5xl lg:text-[65px] font-bold text-[#293893] leading-tight">
+      <h2 className="font-poppins text-[28px] lg:text-[65px] font-bold text-[#293893] leading-tight">
         Smarter Travel.
       </h2>
 
       {/* Subtitle */}
       <p
-        className="text-xl lg:text-[24px] font-normal text-[#0D1230] max-w-4xl mt-8"
+        className="text-[16px] lg:text-[24px] font-normal text-[#0D1230] max-w-4xl mt-8"
         style={{ fontFamily: "var(--font-roboto)" }}
       >
         Our Online Booking Tool (Skyvix) connects all key departments and
-        partners—each with unique expectations and contributions. Here’s how we
+        partners—each with unique expectations and contributions. Here&lsquo;s how we
         work together to unlock full value.
       </p>
 

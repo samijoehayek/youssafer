@@ -17,27 +17,27 @@ export default function Home() {
       <section id="home">
         <Homepage />
       </section>
-      <div className="bg-white h-24" />
+      <div className="bg-white h-8 md:h-24" />
       <section id="our-story">
         <OurStory />
       </section>
-      <div className="bg-white h-24" />
+      <div className="bg-white h-8 md:h-24" />
       <section id="features">
         <SmarterSoftware />
       </section>
-      <div className="bg-white h-24" />
+      <div className="bg-white h-4 md:h-24" />
       <section>
         <EcosystemSection />
       </section>
-      <div className="bg-white h-24" />
+      <div className="bg-white h-8 md:h-24" />
       <section id="services">
         <BeyondSoftwareSection />
       </section>
-      <div className="bg-white h-24" />
+      <div className="bg-white h-8 md:h-24" />
       <section id="expertise">
         <AligningExpectationsSection />
       </section>
-      <div className="bg-white h-24" />
+      <div className="bg-white md:h-24" />
       <section>
         <DemoSection />
       </section>

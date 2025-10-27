@@ -19,12 +19,12 @@ export function SmarterSoftware() {
       >
         
         <div className="flex flex-col items-center text-center max-w-4xl px-8 z-10">
-          <h2 className="text-5xl lg:text-[65px] leading-tight text-white">
+          <h2 className="text-[22px] lg:text-[65px] leading-tight text-white">
             Powering Business Travel
             <br />
             <span className="font-bold">With Smarter Software</span>
           </h2>
-          <p className="mt-6 text-lg lg:text-[19px] text-white/80 max-w-3xl" style={{ fontFamily: 'var(--font-roboto)' }}>
+          <p className="mt-6 text-[14px] lg:text-[19px] text-white/80 max-w-3xl" style={{ fontFamily: 'var(--font-roboto)' }}>
             Skyvix empowers companies to manage travel in real time - seamlessly, intelligently, and with full compliance - all while driving measurable cost savings.
           </p>
         </div>

@@ -8,7 +8,7 @@ const Homepage = () => {
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       <div
         aria-hidden="true"
-        className="absolute -z-10 top-20 right-5"
+        className="absolute -z-10 top-20 right-5 hidden lg:block"
         style={{ height: "877px", width: "942px" }}
       >
         <Image
@@ -36,9 +36,9 @@ const Homepage = () => {
 
       {/* Content Grid Layer */}
       <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 items-center gap-8 px-6 sm:px-12 lg:px-24">
-        <div className="lg:col-span-9 flex flex-col justify-center gap-y-6 text-center lg:text-left">
+        <div className="lg:col-span-9 flex flex-col justify-center gap-y-6 text-left">
           {/* ✅ Title updated to Poppins font */}
-          <h1 className="text-5xl lg:text-[70px] leading-tight font-poppins">
+          <h1 className="text-4xl sm:text-5xl lg:text-[70px] leading-tight font-poppins">
             <span className="font-light text-black">Smart Travel</span>
             <br />
             <span className="font-bold text-active-blue">
@@ -48,29 +48,25 @@ const Homepage = () => {
 
           {/* ✅ Body text updated to Roboto font */}
           <p
-            className="text-xl lg:text-[20px] text-hero-desc mx-auto lg:mx-0"
+            className="text-base sm:text-xl lg:text-[20px] text-hero-desc"
             style={{ fontFamily: "var(--font-roboto)" }}
           >
             Yousaffer empowers Travel Agents, TMCs, and Corporate clients across
-            <br />
             the Middle East and Africa with smart tech and expert consultancy.
-            <br />
             Our tools boost productivity and streamline travel management - from
-            <br />
             policies and approvals to reporting and analytics.
-            <br />
           </p>
 
           <div
-            className="flex flex-col items-center lg:items-start mt-2"
+            className="flex flex-col items-start mt-2"
             style={{ fontFamily: "var(--font-roboto)" }}
           >
             {/* ✅ Statistic title updated to Poppins font */}
-            <p className="text-3xl font-bold text-hero-stat font-poppins">
+            <p className="text-2xl sm:text-3xl font-bold text-hero-stat font-poppins">
               20+ years
             </p>
             {/* ✅ Statistic subtitle updated to Roboto font */}
-            <p className="text-xl text-hero-stat">
+            <p className="text-lg sm:text-xl text-hero-stat">
               Of business travel expertise
             </p>
           </div>
@@ -84,6 +80,18 @@ const Homepage = () => {
             >
               Join our pilot program
             </Link>
+          </div>
+
+          {/* ✅ Mobile hero image - shows below content on mobile */}
+          <div className="relative w-full h-[400px] mt-8 lg:hidden rounded-lg overflow-hidden">
+            <Image
+              src="/hero-image.png"
+              alt="A background image of a travel dashboard"
+              fill
+              style={{ objectFit: "cover" }}
+              quality={80}
+              priority
+            />
           </div>
         </div>
       </div>
