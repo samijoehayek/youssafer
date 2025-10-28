@@ -100,7 +100,7 @@ function hexToRgba(hex: string, alpha: number): string {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
-// InteractiveNodes component (no changes here)
+// InteractiveNodes component - UPDATED MOBILE LAYOUT
 const InteractiveNodes = ({
   activeIndex,
   setActiveIndex,
@@ -183,58 +183,171 @@ const InteractiveNodes = ({
         })}
       </div>
 
-      {/* Mobile Layout */}
-      <div className="lg:hidden flex flex-col gap-10 items-center w-full max-w-sm">
-        {ecosystemData.map((node, index) => {
-          const isActive = index === activeIndex;
-          return (
-            <div
-              key={node.name}
-              className="flex flex-col items-center gap-4"
-              onClick={() => setActiveIndex(index)}
-            >
-              <div className="relative flex items-center justify-center">
-                <div
-                  className={`absolute w-24 h-24 rounded-full transition-opacity duration-300 ${
-                    isActive ? "opacity-100" : "opacity-0"
-                  }`}
-                  style={{ backgroundColor: hexToRgba(node.color, 0.1) }}
-                ></div>
-                <div
-                  className="relative w-16 h-16 rounded-full border-4 flex items-center justify-center transition-all duration-300 cursor-pointer bg-white"
-                  style={{ borderColor: node.color }}
-                >
-                  <div
-                    className="w-8 h-8 transition-colors duration-300"
-                    style={{
-                      backgroundColor: isActive
-                        ? node.color
-                        : "rgba(13, 18, 48, 1)",
-                      maskImage: `url(${node.icon})`,
-                      maskSize: "contain",
-                      maskRepeat: "no-repeat",
-                      maskPosition: "center",
-                    }}
-                  />
-                </div>
-              </div>
-              <button
-                className={`py-2 px-5 rounded-lg transition-colors duration-300 text-center text-base ${
-                  isActive ? "font-semibold" : "font-medium"
-                }`}
-                style={{
-                  backgroundColor: isActive ? node.color : "#FFFFFF",
-                  color: isActive ? "white" : "#333",
-                  border: isActive
-                    ? "none"
-                    : "1px solid rgba(223, 223, 223, 1)",
-                }}
+      {/* Mobile Layout - 3 rows: 2-2-1 pattern */}
+      <div className="lg:hidden w-full max-w-2xl">
+        {/* Row 1: First 2 nodes */}
+        <div className="grid grid-cols-2 gap-8 mb-8">
+          {ecosystemData.slice(0, 2).map((node, index) => {
+            const isActive = index === activeIndex;
+            return (
+              <div
+                key={node.name}
+                className="flex flex-col items-center gap-4"
+                onClick={() => setActiveIndex(index)}
               >
-                {node.name}
-              </button>
-            </div>
-          );
-        })}
+                <div className="relative flex items-center justify-center">
+                  <div
+                    className={`absolute w-24 h-24 rounded-full transition-opacity duration-300 ${
+                      isActive ? "opacity-100" : "opacity-0"
+                    }`}
+                    style={{ backgroundColor: hexToRgba(node.color, 0.1) }}
+                  ></div>
+                  <div
+                    className="relative w-16 h-16 rounded-full border-4 flex items-center justify-center transition-all duration-300 cursor-pointer bg-white"
+                    style={{ borderColor: node.color }}
+                  >
+                    <div
+                      className="w-8 h-8 transition-colors duration-300"
+                      style={{
+                        backgroundColor: isActive
+                          ? node.color
+                          : "rgba(13, 18, 48, 1)",
+                        maskImage: `url(${node.icon})`,
+                        maskSize: "contain",
+                        maskRepeat: "no-repeat",
+                        maskPosition: "center",
+                      }}
+                    />
+                  </div>
+                </div>
+                <button
+                  className={`py-2 px-4 rounded-lg transition-colors duration-300 text-center text-sm ${
+                    isActive ? "font-semibold" : "font-medium"
+                  }`}
+                  style={{
+                    backgroundColor: isActive ? node.color : "#FFFFFF",
+                    color: isActive ? "white" : "#333",
+                    border: isActive
+                      ? "none"
+                      : "1px solid rgba(223, 223, 223, 1)",
+                  }}
+                >
+                  {node.name}
+                </button>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Row 2: Next 2 nodes */}
+        <div className="grid grid-cols-2 gap-8 mb-8">
+          {ecosystemData.slice(2, 4).map((node, index) => {
+            const actualIndex = index + 2;
+            const isActive = actualIndex === activeIndex;
+            return (
+              <div
+                key={node.name}
+                className="flex flex-col items-center gap-4"
+                onClick={() => setActiveIndex(actualIndex)}
+              >
+                <div className="relative flex items-center justify-center">
+                  <div
+                    className={`absolute w-24 h-24 rounded-full transition-opacity duration-300 ${
+                      isActive ? "opacity-100" : "opacity-0"
+                    }`}
+                    style={{ backgroundColor: hexToRgba(node.color, 0.1) }}
+                  ></div>
+                  <div
+                    className="relative w-16 h-16 rounded-full border-4 flex items-center justify-center transition-all duration-300 cursor-pointer bg-white"
+                    style={{ borderColor: node.color }}
+                  >
+                    <div
+                      className="w-8 h-8 transition-colors duration-300"
+                      style={{
+                        backgroundColor: isActive
+                          ? node.color
+                          : "rgba(13, 18, 48, 1)",
+                        maskImage: `url(${node.icon})`,
+                        maskSize: "contain",
+                        maskRepeat: "no-repeat",
+                        maskPosition: "center",
+                      }}
+                    />
+                  </div>
+                </div>
+                <button
+                  className={`py-2 px-4 rounded-lg transition-colors duration-300 text-center text-sm ${
+                    isActive ? "font-semibold" : "font-medium"
+                  }`}
+                  style={{
+                    backgroundColor: isActive ? node.color : "#FFFFFF",
+                    color: isActive ? "white" : "#333",
+                    border: isActive
+                      ? "none"
+                      : "1px solid rgba(223, 223, 223, 1)",
+                  }}
+                >
+                  {node.name}
+                </button>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Row 3: Last node centered */}
+        <div className="flex justify-center">
+          {ecosystemData.slice(4, 5).map((node, index) => {
+            const actualIndex = 4;
+            const isActive = actualIndex === activeIndex;
+            return (
+              <div
+                key={node.name}
+                className="flex flex-col items-center gap-4"
+                onClick={() => setActiveIndex(actualIndex)}
+              >
+                <div className="relative flex items-center justify-center">
+                  <div
+                    className={`absolute w-24 h-24 rounded-full transition-opacity duration-300 ${
+                      isActive ? "opacity-100" : "opacity-0"
+                    }`}
+                    style={{ backgroundColor: hexToRgba(node.color, 0.1) }}
+                  ></div>
+                  <div
+                    className="relative w-16 h-16 rounded-full border-4 flex items-center justify-center transition-all duration-300 cursor-pointer bg-white"
+                    style={{ borderColor: node.color }}
+                  >
+                    <div
+                      className="w-8 h-8 transition-colors duration-300"
+                      style={{
+                        backgroundColor: isActive
+                          ? node.color
+                          : "rgba(13, 18, 48, 1)",
+                        maskImage: `url(${node.icon})`,
+                        maskSize: "contain",
+                        maskRepeat: "no-repeat",
+                        maskPosition: "center",
+                      }}
+                    />
+                  </div>
+                </div>
+                <button
+                  className={`py-2 px-4 rounded-lg transition-colors duration-300 text-center text-sm ${
+                    isActive ? "font-semibold" : "font-medium"
+                  }`}
+                  style={{
+                    backgroundColor: isActive ? node.color : "#FFFFFF",
+                    color: isActive ? "white" : "#333",
+                    border: isActive
+                      ? "none"
+                      : "1px solid rgba(223, 223, 223, 1)",
+                  }}
+                >
+                  {node.name}
+                </button>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
@@ -320,7 +433,7 @@ const EcosystemDetailCard = ({ data }: { data: (typeof ecosystemData)[0] }) => {
   );
 };
 
-// Main section component - UPDATED WITH MOBILE FONT SIZES
+// Main section component
 export function EcosystemSection() {
   const [activeIndex, setActiveIndex] = useState(2);
 

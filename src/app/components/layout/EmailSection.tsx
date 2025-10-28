@@ -42,7 +42,7 @@ const DemoSection: React.FC = () => {
               See it in action
             </h2>
             <p className="text-lg md:text-lg text-white/90 mb-8 leading-relaxed" style={{ fontFamily: 'var(--font-roboto)' }}>
-              Get a personalized demo tailored to your business <br /> needs and discover how we transform travel management
+              Get a personalized demo tailored to your business <br className="hidden md:block" /> needs and discover how we transform travel management
             </p>
             <div className="mb-8">
               <div className="flex gap-3 max-w-lg">
