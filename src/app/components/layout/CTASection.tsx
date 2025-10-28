@@ -3,8 +3,8 @@ import React from 'react';
 
 export const FinalCTASection: React.FC = () => {
   return (
-    <section className="bg-white pb-24 md:pb-60">
-      <div className="bg-white rounded-t-3xl lg:rounded-t-[40px] w-full -mt-32 relative z-10">
+    <section className="bg-[#FAFAFA] pb-24 md:pb-60">
+      <div className="bg-[#FAFAFA] rounded-t-3xl lg:rounded-t-[40px] w-full -mt-32 relative z-10">
         <div className="max-w-screen-2xl mx-auto p-8 md:p-16">
           {/* ✅ Increased gap for more space, items-center vertically aligns the text with the taller image */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
@@ -27,7 +27,7 @@ export const FinalCTASection: React.FC = () => {
                   Our platform empowers companies to plan, book, and manage trips effortlessly - while giving them full visibility, control, and cost oversight.
                 </p>
                 <p>
-                  With customizable tools tailored to your needs, we simplify travel management and reduce friction at every step. We’re also open to co-developing new solutions to meet your evolving business goals.
+                  With customizable tools tailored to your needs, we simplify travel management and reduce friction at every step. We&apos;re also open to co-developing new solutions to meet your evolving business goals.
                 </p>
                 <p>
                   Travel with less hassle, more control, and total peace of mind.

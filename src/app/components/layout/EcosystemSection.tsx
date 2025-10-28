@@ -240,7 +240,7 @@ const InteractiveNodes = ({
   );
 };
 
-// EcosystemDetailCard component (no changes here)
+// EcosystemDetailCard component
 const EcosystemDetailCard = ({ data }: { data: (typeof ecosystemData)[0] }) => {
   return (
     <div className="w-full bg-[#F3F4F6] rounded-3xl py-8 lg:py-12 px-4 lg:px-6 mt-16 text-left">
@@ -267,9 +267,9 @@ const EcosystemDetailCard = ({ data }: { data: (typeof ecosystemData)[0] }) => {
       {/* Two Column Layout */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Left Column */}
-        <div className="bg-white rounded-2xl p-6">
-          <h4 className="font-bold text-gray-800">What Skyvix Require</h4>
-          <p className="text-sm text-gray-500 mb-4">
+        <div className="bg-white rounded-3xl p-6">
+          <h4 className="font-bold text-[#293893]">What Skyvix Require</h4>
+          <p className="text-sm text-[#293893] mb-4">
             What We Need From The Corporate
           </p>
           <ul className="space-y-2">
@@ -291,11 +291,11 @@ const EcosystemDetailCard = ({ data }: { data: (typeof ecosystemData)[0] }) => {
         </div>
 
         {/* Right Column */}
-        <div className="bg-white rounded-2xl p-6">
-          <h4 className="font-bold text-gray-800">
+        <div className="bg-white rounded-3xl p-6">
+          <h4 className="font-bold text-[#293893]">
             What The Client Expect In Return
           </h4>
-          <p className="text-sm text-gray-500 mb-4">
+          <p className="text-sm text-[#293893] mb-4">
             What They Expect From Skyvix
           </p>
           <ul className="space-y-2">

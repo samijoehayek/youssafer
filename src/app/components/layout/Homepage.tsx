@@ -9,7 +9,7 @@ const Homepage = () => {
       <div
         aria-hidden="true"
         className="absolute -z-10 top-20 right-5 hidden lg:block"
-        style={{ height: "877px", width: "942px" }}
+        style={{ height: "837px", width: "902px" }}
       >
         <Image
           src="/hero-image.png"
@@ -23,7 +23,7 @@ const Homepage = () => {
       <div
         aria-hidden="true"
         className="absolute -z-20 right-100"
-        style={{ height: "1000px", width: "1000px" }}
+        style={{ height: "950px", width: "950px" }}
       >
         <Image
           src="/glow.png"
@@ -35,7 +35,7 @@ const Homepage = () => {
       </div>
 
       {/* Content Grid Layer */}
-      <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 items-center gap-8 px-6 sm:px-12 lg:px-24">
+      <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 items-center gap-8 px-6 sm:px-12 lg:px-32">
         <div className="lg:col-span-9 flex flex-col justify-center gap-y-6 text-left">
           {/* ✅ Title updated to Poppins font */}
           <h1 className="text-4xl sm:text-5xl lg:text-[70px] leading-tight font-poppins">

@@ -75,9 +75,9 @@ const features = [
 const PlaceholderButton = () => (
   <Link
     href="/demo"
-    className="text-base md:text-xl border border-active-blue text-active-blue px-6 py-2.5 md:px-8 md:py-3 rounded-md inline-block"
+    className="text-sm md:text-base border border-active-blue text-active-blue px-6 py-2.5 md:px-8 md:py-3 rounded-lg md:rounded-xl inline-block"
   >
-    Request a demo
+    Request a Demo
   </Link>
 );
 
@@ -124,8 +124,8 @@ export function InteractiveFeatureBox() {
       </nav>
 
       {/* Content Area */}
-      <div className="flex-grow flex flex-col md:flex-row gap-6 md:gap-8 lg:gap-12 mt-6 md:mt-4 items-center md:items-start">
-        {/* Text Content */}
+      <div className="flex-grow flex flex-col md:flex-row gap-6 md:gap-8 lg:gap-12 mt-6 md:mt-4 items-center">
+        {/* Text Content - centered vertically on desktop */}
         <div className="w-full md:w-[35%] lg:w-[30%] flex flex-col justify-center px-4 md:pl-8">
           <div className="text-left">
             <h3 className="font-poppins font-semibold text-2xl md:text-4xl lg:text-5xl leading-tight text-active-blue">
@@ -134,7 +134,7 @@ export function InteractiveFeatureBox() {
             <p className="text-sm md:text-base lg:text-lg text-gray-600 mt-3 md:mt-4" style={{ fontFamily: 'var(--font-roboto)' }}>
               {activeFeature.subtitle}
             </p>
-            <div className="mt-6 md:mt-18">
+            <div className="mt-6 md:mt-8">
               <PlaceholderButton />
             </div>
           </div>
