@@ -438,7 +438,7 @@ export function EcosystemSection() {
   const [activeIndex, setActiveIndex] = useState(2);
 
   return (
-    <section className="bg-white min-h-[1200px] w-full flex flex-col items-center justify-center py-24 px-6 text-center">
+    <section className="bg-white min-h-[1200px] w-full flex flex-col items-center justify-center py-12 px-6 text-center">
       {/* Main Titles */}
       <h2 className="font-poppins text-[28px] lg:text-[65px] font-normal text-black leading-tight">
         Our Ecosystem. <br />Seamless Collaboration.

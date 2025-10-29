@@ -66,23 +66,21 @@ const InfoCard = ({
 }) => (
   <div className="w-full">
     <div
-      className="rounded-2xl p-6 flex flex-col items-center text-center gap-4 w-full h-full"
+      className="rounded-2xl p-6 flex flex-col items-start text-left gap-4 w-full h-full"
       style={{ backgroundColor: bgColor }}
     >
-      {/* Icon section */}
-      <div className="relative w-16 h-16 flex items-center justify-center flex-shrink-0">
+      <div className="relative w-12 h-12 flex items-center justify-center flex-shrink-0">
         <div
           className="absolute w-full h-full rounded-full"
           style={{ backgroundColor: outerCircleColor }}
         ></div>
         <div
-          className="absolute w-14 h-14 rounded-full"
+          className="absolute w-10 h-10 rounded-full"
           style={{ backgroundColor: innerCircleColor }}
         ></div>
-        <Icon className="w-8 h-8 text-white relative" />
+        <Icon className="w-6 h-6 text-white relative" />
       </div>
-      {/* Text content */}
-      <div>
+      <div className="text-left">
         <h3 className="font-poppins font-bold text-lg md:text-xl text-gray-800">
           {title}
         </h3>
@@ -110,18 +108,17 @@ export function AligningExpectationsSection() {
 
   return (
     <section className="relative w-full min-h-[800px] flex items-center justify-center py-24 px-6 lg:px-12 overflow-hidden bg-white">
-      <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-[450px] h-auto hidden lg:block">
+      <div className="absolute right-[-50px] top-1/2 transform -translate-y-1/2 w-[380px] h-auto hidden lg:block">
         <Image
           src="/plane.png"
           alt="Airplane flying"
-          width={450}
-          height={300}
+          width={380}
+          height={250}
           style={{ objectFit: "contain" }}
         />
       </div>
 
       <div className="container mx-auto flex flex-col items-center text-center max-w-6xl z-10">
-        {/* Title Section */}
         <h2 className="font-poppins text-[28px] md:text-5xl lg:text-[56px] font-normal text-black leading-tight">
           Aligning Travel Expectations with Reality
         </h2>
@@ -137,94 +134,84 @@ export function AligningExpectationsSection() {
           tech, we go beyond tools—we solve real business challenges.
         </p>
 
-        {/* Desktop Layout - Vertical Slider */}
+        {/* Desktop Layout */}
         <div className="hidden lg:flex items-center gap-6 mt-16 w-full justify-center">
-          <div className="relative h-[220px] w-full max-w-4xl overflow-hidden">
-            <div
-              className="absolute top-0 left-0 w-full transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateY(-${currentIndex * 240}px)` }}
-            >
-              {cardSets.map((cardPair, index) => (
-                <div
-                  key={index}
-                  className="flex flex-row gap-8 justify-center h-[220px] mb-5"
-                >
+          <div className="relative h-[220px] w-full max-w-4xl">
+            {cardSets.map((cardPair, index) => (
+              <div
+                key={index}
+                className={`absolute top-0 left-0 w-full transition-opacity duration-500 ${
+                  currentIndex === index ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                <div className="flex flex-row gap-8 justify-center h-[220px]">
                   <InfoCard {...cardPair.negative} />
                   <InfoCard {...cardPair.positive} />
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
 
-          {/* Desktop Arrows - Vertical */}
           <div className="flex flex-col gap-4">
             <button
               onClick={handlePrev}
-              className="w-14 h-14 rounded-full flex items-center justify-center transition-transform hover:scale-110 active:scale-95"
+              className="w-12 h-12 rounded-full flex items-center justify-center transition-transform hover:scale-110 active:scale-95"
               style={{ backgroundColor: "rgba(245, 245, 245, 1)" }}
             >
-              <Image src="/icons/uparrow.svg" alt="Up" width={24} height={24} />
+              <Image src="/icons/uparrow.svg" alt="Up" width={14} height={14} />
             </button>
             <button
               onClick={handleNext}
-              className="w-14 h-14 rounded-full flex items-center justify-center transition-transform hover:scale-110 active:scale-95"
+              className="w-12 h-12 rounded-full flex items-center justify-center transition-transform hover:scale-110 active:scale-95"
               style={{ backgroundColor: "rgba(245, 245, 245, 1)" }}
             >
-              <Image
-                src="/icons/downarrow.svg"
-                alt="Down"
-                width={24}
-                height={24}
-              />
+              <Image src="/icons/downarrow.svg" alt="Down" width={14} height={14} />
             </button>
           </div>
         </div>
 
-        {/* Mobile Layout - Horizontal Slider with Stacked Cards */}
+        {/* Mobile Layout */}
         <div className="lg:hidden mt-12 w-full">
-          {/* Cards Container - Horizontal Slider */}
-          <div className="relative w-full overflow-hidden">
-            <div
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-            >
-              {cardSets.map((cardPair, index) => (
-                <div
-                  key={index}
-                  className="w-full flex-shrink-0 flex flex-col gap-4 px-2"
-                >
+          <div className="relative w-full">
+            {cardSets.map((cardPair, index) => (
+              <div
+                key={index}
+                className={`transition-opacity duration-500 ${
+                  currentIndex === index ? "opacity-100" : "opacity-0 absolute top-0 left-0 w-full"
+                }`}
+              >
+                <div className="flex flex-col gap-4 px-2">
                   <InfoCard {...cardPair.negative} />
                   <InfoCard {...cardPair.positive} />
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
 
-          {/* Mobile Arrows - Horizontal */}
           <div className="flex gap-4 justify-center mt-6">
             <button
-              onClick={handleNext}
-              className="w-14 h-14 rounded-full flex items-center justify-center transition-transform hover:scale-110 active:scale-95"
-              style={{ backgroundColor: "rgba(245, 245, 245, 1)" }}
-            >
-              <Image
-                src="/icons/downarrow.svg"
-                alt="Next"
-                width={24}
-                height={24}
-                className="rotate-90"
-              />
-            </button>
-            <button
               onClick={handlePrev}
-              className="w-14 h-14 rounded-full flex items-center justify-center transition-transform hover:scale-110 active:scale-95"
+              className="w-12 h-12 rounded-full flex items-center justify-center transition-transform hover:scale-110 active:scale-95"
               style={{ backgroundColor: "rgba(245, 245, 245, 1)" }}
             >
               <Image
                 src="/icons/uparrow.svg"
                 alt="Previous"
-                width={24}
-                height={24}
+                width={14}
+                height={14}
+                className="rotate-90"
+              />
+            </button>
+            <button
+              onClick={handleNext}
+              className="w-12 h-12 rounded-full flex items-center justify-center transition-transform hover:scale-110 active:scale-95"
+              style={{ backgroundColor: "rgba(245, 245, 245, 1)" }}
+            >
+              <Image
+                src="/icons/downarrow.svg"
+                alt="Next"
+                width={14}
+                height={14}
                 className="rotate-90"
               />
             </button>

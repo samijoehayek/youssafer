@@ -79,7 +79,8 @@ const SliderCard = ({
       <card.icon className="w-8 h-8" style={{ color: card.iconColor }} />
     </div>
     <div>
-      <h3 className="font-poppins font-bold text-xl lg:text-[28px] text-[#0D1230]">
+      {/* ✅ FIXED: Font size changed from 28px to 25px */}
+      <h3 className="font-poppins font-bold text-xl lg:text-[25px] text-[#0D1230]">
         {card.title}
       </h3>
       <p className="font-normal text-sm lg:text-base text-[#0D1230] mt-1" style={{ fontFamily: 'var(--font-roboto)' }}>
@@ -108,9 +109,10 @@ export function BeyondSoftwareSection() {
     }
   };
 
-  const CARD_HEIGHT = 144;
+  // ✅ FIXED: Adjusted card height for smaller gaps
+  const CARD_HEIGHT = 130;
 
-  // Touch/Mouse event handlers for mobile scrolling
+  // Touch/Mouse event handlers for mobile scrolling (not used anymore on mobile)
   const handleTouchStart = (e: React.TouchEvent) => {
     if (scrollContainerRef.current) {
       setIsDragging(true);
@@ -157,24 +159,31 @@ export function BeyondSoftwareSection() {
           </div>
         </div>
 
-        {/* Right Column - Vertical Slider (Desktop) / Touch Scroll (Mobile) */}
-        <div className="lg:w-1/2 flex items-center justify-center lg:justify-end gap-6 w-full mt-12 lg:mt-0">
-          {/* Mobile: Touch scrollable container */}
+        {/* Right Column - Desktop: Vertical Slider / Mobile: All Cards Stacked */}
+        <div className="lg:w-1/2 flex items-center justify-center lg:justify-end gap-8 w-full mt-12 lg:mt-0">
+          {/* ✅ MOBILE: Display all cards stacked without scrolling */}
+          <div className="w-full lg:hidden flex flex-col gap-3">
+            {cardData.map((card, index) => (
+              <SliderCard key={index} card={card} />
+            ))}
+          </div>
+
+          {/* ✅ DESKTOP: Animated slider with increased width */}
           <div 
             ref={scrollContainerRef}
-            className="w-full lg:w-[80%] max-w-md h-[500px] lg:h-[660px] overflow-y-auto lg:overflow-hidden relative scrollbar-hide gradient-mask-desktop"
+            className="hidden lg:block w-[680px] h-[660px] overflow-hidden relative gradient-mask-desktop"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
-            {/* Desktop: Animated transform */}
             <div
-              className="lg:absolute lg:top-0 lg:left-0 lg:right-0 transition-transform duration-500 ease-in-out"
+              className="absolute top-0 left-0 right-0 transition-transform duration-500 ease-in-out"
               style={{
                 transform: `translateY(-${currentIndex * CARD_HEIGHT}px)`,
               }}
             >
-              <div className="flex flex-col gap-4 lg:gap-6">
+              {/* ✅ FIXED: Gap reduced from gap-6 to gap-3 for closer cards */}
+              <div className="flex flex-col gap-3">
                 {cardData.map((card, index) => (
                   <SliderCard
                     key={index}
@@ -185,35 +194,30 @@ export function BeyondSoftwareSection() {
             </div>
           </div>
 
-          {/* Slider Arrows - Hidden on mobile */}
+          {/* ✅ FIXED: Slider Arrows - Hidden on mobile, farther from cards, smaller icons */}
           <div className="hidden lg:flex flex-col gap-4">
             <button
               onClick={handlePrev}
               className="w-14 h-14 bg-white rounded-full flex items-center justify-center transition-transform hover:scale-110 active:scale-95 disabled:opacity-50 disabled:scale-100"
               disabled={currentIndex === 0}
             >
-              <Image src="/icons/uparrow.svg" alt="Up" width={24} height={24} />
+              {/* ✅ FIXED: Icon size reduced from 24x24 to 18x18 */}
+              <Image src="/icons/uparrow.svg" alt="Up" width={18} height={18} />
             </button>
             <button
               onClick={handleNext}
               className="w-14 h-14 bg-white rounded-full flex items-center justify-center transition-transform hover:scale-110 active:scale-95 disabled:opacity-50 disabled:scale-100"
               disabled={currentIndex >= cardData.length - 4}
             >
-              <Image src="/icons/downarrow.svg" alt="Down" width={24} height={24} />
+              {/* ✅ FIXED: Icon size reduced from 24x24 to 18x18 */}
+              <Image src="/icons/downarrow.svg" alt="Down" width={18} height={18} />
             </button>
           </div>
         </div>
       </div>
 
-      {/* Styles for scrollbar hiding and gradient mask */}
+      {/* Styles for gradient mask (desktop only) */}
       <style jsx>{`
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
         @media (min-width: 1024px) {
           .gradient-mask-desktop {
             -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);

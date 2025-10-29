@@ -6,24 +6,41 @@ import Link from "next/link";
 const Homepage = () => {
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+      {/* ✅ FIXED: Airplane image - removed fixed height, made it responsive */}
       <div
         aria-hidden="true"
-        className="absolute -z-10 top-20 right-5 hidden lg:block"
-        style={{ height: "837px", width: "902px" }}
+        className="absolute -z-10 top-20 right-5 hidden lg:block w-[902px]"
+        style={{ aspectRatio: "902/837" }}
       >
         <Image
           src="/hero-image.png"
           alt="A background image of a travel dashboard"
           fill
-          style={{ objectFit: "cover" }}
+          style={{ objectFit: "contain" }} // Changed from "cover" to "contain"
           quality={80}
           priority
         />
       </div>
+      
       <div
         aria-hidden="true"
-        className="absolute -z-20 right-100"
-        style={{ height: "950px", width: "950px" }}
+        className="absolute -z-20 right-0 hidden lg:block"
+        style={{ height: "950px", width: "1450px" }}
+      >
+        <Image
+          src="/glow.png"
+          alt=""
+          aria-hidden="true"
+          fill
+          style={{ objectFit: "contain" }}
+        />
+      </div>
+
+      {/* ✅ FIXED: Glow image for MOBILE - now visible on mobile */}
+      <div
+        aria-hidden="true"
+        className="absolute -z-20 -right-32 top-110 lg:hidden"
+        style={{ height: "600px", width: "600px" }}
       >
         <Image
           src="/glow.png"
@@ -37,7 +54,6 @@ const Homepage = () => {
       {/* Content Grid Layer */}
       <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 items-center gap-8 px-6 sm:px-12 lg:px-32">
         <div className="lg:col-span-9 flex flex-col justify-center gap-y-6 text-left">
-          {/* ✅ Title updated to Poppins font */}
           <h1 className="text-4xl sm:text-5xl lg:text-[70px] leading-tight font-poppins">
             <span className="font-light text-black">Smart Travel</span>
             <br />
@@ -46,7 +62,6 @@ const Homepage = () => {
             </span>
           </h1>
 
-          {/* ✅ Body text updated to Roboto font */}
           <p
             className="text-base sm:text-xl lg:text-[20px] text-hero-desc"
             style={{ fontFamily: "var(--font-roboto)" }}
@@ -61,29 +76,30 @@ const Homepage = () => {
             className="flex flex-col items-start mt-2"
             style={{ fontFamily: "var(--font-roboto)" }}
           >
-            {/* ✅ Statistic title updated to Poppins font */}
             <p className="text-2xl sm:text-3xl font-bold text-hero-stat font-poppins">
               20+ years
             </p>
-            {/* ✅ Statistic subtitle updated to Roboto font */}
             <p className="text-lg sm:text-xl text-hero-stat">
               Of business travel expertise
             </p>
           </div>
 
           <div className="pt-4">
-            {/* ✅ Button updated with new styles */}
+            {/* ✅ FIXED: Button with corner smoothing using clip-path */}
             <Link
               href="/pilot"
               className="inline-block bg-active-blue text-white text-[16px] font-bold font-roboto px-8 py-4 rounded-xl shadow-lg hover:bg-opacity-90 transition-colors"
-              style={{ fontFamily: "var(--font-roboto)" }}
+              style={{ 
+                fontFamily: "var(--font-roboto)",
+                
+              }}
             >
               Join our pilot program
             </Link>
           </div>
 
           {/* ✅ Mobile hero image - shows below content on mobile */}
-          <div className="relative w-full h-[400px] mt-8 lg:hidden rounded-lg overflow-hidden">
+          <div className="relative w-full h-[400px] mt-8 lg:hidden rounded-lg overflow-hidden -z-10">
             <Image
               src="/hero-image.png"
               alt="A background image of a travel dashboard"

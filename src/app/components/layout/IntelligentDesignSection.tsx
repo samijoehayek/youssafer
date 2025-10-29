@@ -52,7 +52,7 @@ const AdvantageCard = ({
       <Image src={Icon} alt={title} width={24} height={24} className="md:w-8 md:h-8" />
     </div>
     <div className="flex-1">
-      <h3 className="font-poppins font-bold text-lg md:text-xl lg:text-[28px] text-[#0D1230]">
+      <h3 className="font-poppins font-bold text-lg md:text-xl lg:text-[22px] text-[#0D1230]">
         {title}
       </h3>
       <p

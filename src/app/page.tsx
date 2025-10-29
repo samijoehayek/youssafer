@@ -25,15 +25,15 @@ export default function Home() {
       <section id="features">
         <SmarterSoftware />
       </section>
-      <div className="bg-white h-4 md:h-24" />
+      <div className="bg-white md:h-24" />
       <section id="ecosystem">
         <EcosystemSection />
       </section>
-      <div className="bg-white h-8 md:h-24" />
+      <div className="bg-white md:h-24" />
       <section id="services">
         <BeyondSoftwareSection />
       </section>
-      <div className="bg-white h-8 md:h-24" />
+      <div className="bg-white md:h-24" />
       <section id="expertise">
         <AligningExpectationsSection />
       </section>
